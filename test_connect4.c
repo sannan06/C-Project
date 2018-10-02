@@ -28,22 +28,25 @@ void MyTestFunction(void)
 	printf("   Prize = %d\n", SecondPlacePrize(200, 100, 200));
 	printf("   Prize = %d\n", SecondPlacePrize(45, 600, 590));
 
-	// // An example of code that you could use to test Task Two.
-	// // You should write additional tests of your own
-	// printf("\nTESTING TASK TWO:\n");
-	// printf("=================\n");
-	// int valuesA[10] = {1,2,1,2,1,1,1,1,2,1};
-	// int valuesB[15] = {1,2,1,2,1,1,1,2,2,1,1,4,4,4,4};
-	// int valuesC[15] = {5,6,7,8,8,8,8,8,8,8,8,8,8,8,8};
-	// int result;
-	// result = FourInARow(valuesA, 10);
-	// printf("   Result = %d\n", result);
-	// result = FourInARow(valuesB, 15);
-	// printf("   Result = %d\n", result);
-	// result = FourInARow(valuesC, 15);
-	// printf("   Result = %d\n", result);
-	// result = FourInARow(valuesC, 6);
-	// printf("   Result = %d\n", result);
+	// An example of code that you could use to test Task Two.
+	// You should write additional tests of your own
+	printf("\nTESTING TASK TWO:\n");
+	printf("=================\n");
+	int valuesA[10] = {1,2,1,2,1,1,1,1,2,1};
+	int valuesB[15] = {1,2,1,2,1,1,1,2,2,1,1,4,4,4,4};
+	int valuesC[15] = {5,6,7,8,8,8,8,8,8,8,8,8,8,8,8};
+	int valuesD[10] = {1,3,5,6,4,2,4,4,4,4};
+	int result;
+	result = FourInARow(valuesA, 10);
+	printf("   Result = %d\n", result);
+	result = FourInARow(valuesB, 15);
+	printf("   Result = %d\n", result);
+	result = FourInARow(valuesC, 15);
+	printf("   Result = %d\n", result);
+	result = FourInARow(valuesC, 6);
+	printf("   Result = %d\n", result);
+	result = FourInARow(valuesD, 9);
+	printf("   Result = %d\n", result);
 
 	// // An example of code that you could use to test Task Three.
 	// // You should write additional tests of your own
