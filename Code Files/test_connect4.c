@@ -78,17 +78,17 @@ void MyTestFunction(void)
 
 	// // An example of code that you could use to test Task Five.
 	// // You should write additional tests of your own
-	// printf("\nTESTING TASK FIVE:\n");
-	// printf("===================\n");
-	// char nameA[100] = "The       Champ";
-	// char nameB[100] = "     I    AM      THE     GREATEST    ";
-	// char nameC[100] = "Therearenospaceshereatall";
-	// RemoveSpaces(nameA);
-	// RemoveSpaces(nameB);
-	// RemoveSpaces(nameC);
-	// printf("   Name A = [%s]\n", nameA);
-	// printf("   Name B = [%s]\n", nameB);
-	// printf("   Name C = [%s]\n", nameC);
+	printf("\nTESTING TASK FIVE:\n");
+	printf("===================\n");
+	char nameA[100] = "The       Champ";
+	char nameB[100] = "     I    AM      THE     GREATEST    ";
+	char nameC[100] = "Therearenospaceshereatall";
+	RemoveSpaces(nameA);
+	RemoveSpaces(nameB);
+	RemoveSpaces(nameC);
+	printf("   Name A = [%s]\n", nameA);
+	printf("   Name B = [%s]\n", nameB);
+	printf("   Name C = [%s]\n", nameC);
 
 	// // An example of code that you could use to test Task Six.
 	// // You should write additional tests of your own

@@ -104,12 +104,33 @@ double MedianAbility(double abilities[], int length)
 
 }
 
+void RemoveCharacter(char *name, int i, int length){
+
+	for(int j = i; j < length; j++){
+		name[j] = name[j+1];
+	}
+
+}
+
 void RemoveSpaces(char *name)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	name[0] = '\0';
+	int length = strlen(name), i = 0, j = 0;
+	
+	// for(int i = 0; i < length; i++){
+	// 	if((name[i] == ' ') && (name[i+1] == ' ')){
+	// 		RemoveCharacter(name, i, length);
+	// 		printf("%s\n", name);
+	// 	}
+	// }
+
+	while(name[i] != '\0') {
+		if((name[i] == ' ') && (name[i+1] == ' ')){
+			RemoveCharacter(name, i, length);
+			continue;
+		}
+		i++;		
+	}
+
 }
 
 void InitialiseBoard(int board[MAX_SIZE][MAX_SIZE], int size)
