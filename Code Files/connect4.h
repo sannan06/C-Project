@@ -22,5 +22,8 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 void GetDisplayBoardString(int board[MAX_SIZE][MAX_SIZE], int size, char *boardString);
 void GetMoveBot1(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move);
 void GetMoveBot2(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move);
+
+// REMOVE THIS LATER
+int ToThePowerOf(int base, int exponent);
 /*********************************************************************************/
 

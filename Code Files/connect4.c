@@ -50,9 +50,18 @@ int FourInARow(int values[], int length)
 
 }
 
+int ToThePowerOf(int base, int exponent){
+
+	int result = 1;
+	for(int i = 0; i < exponent; i++){
+		result *= base;
+	}
+	return result;
+}
+
 int BinaryToDecimal(int binary)
 {
-	int digits[100], i = 0;
+	int digits[100], i = 0, decimal = 0;
 	
 	while(binary > 0){
 		digits[i] = binary % 10;
@@ -61,10 +70,10 @@ int BinaryToDecimal(int binary)
 	}
 
 	for(int j = 0; j < i; j++){
-		printf("%d", digits[j]);
+		decimal += digits[j] * (ToThePowerOf(2, j));
 	}
 
-	return 0;
+	return decimal;
 }
 
 double MedianAbility(double abilities[], int length)

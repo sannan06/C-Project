@@ -12,6 +12,7 @@ the project handout.
 */
 void MyTestFunction(void);
 void PlayConnectFour(void);
+int ToThePowerOf(int base, int exponent);
 
 /*
 This function is where you can write your own test code, to test the functions that you
@@ -48,15 +49,18 @@ void MyTestFunction(void)
 	result = FourInARow(valuesD, 9);
 	printf("   Result = %d\n", result);
 
+	// Testing for ToThePowerOF
+	// printf("%d\n", ToThePowerOf(2, 3));
+	// printf("%d", ToThePowerOf(2, 6));
+
 	// An example of code that you could use to test Task Three.
 	// You should write additional tests of your own
-	BinaryToDecimal(155);
-	// printf("\nTESTING TASK THREE:\n");
-	// printf("===================\n");
-	// printf("   Decimal = %d\n", BinaryToDecimal(101));
-	// printf("   Decimal = %d\n", BinaryToDecimal(1));
-	// printf("   Decimal = %d\n", BinaryToDecimal(11111111));
-	// printf("   Decimal = %d\n", BinaryToDecimal(100000000));
+	printf("\nTESTING TASK THREE:\n");
+	printf("===================\n");
+	printf("   Decimal = %d\n", BinaryToDecimal(101));
+	printf("   Decimal = %d\n", BinaryToDecimal(1));
+	printf("   Decimal = %d\n", BinaryToDecimal(11111111));
+	printf("   Decimal = %d\n", BinaryToDecimal(100000000));
 
 	// // An example of code that you could use to test Task Four.
 	// // You should write additional tests of your own
