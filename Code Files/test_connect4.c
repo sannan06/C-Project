@@ -62,17 +62,19 @@ void MyTestFunction(void)
 	printf("   Decimal = %d\n", BinaryToDecimal(11111111));
 	printf("   Decimal = %d\n", BinaryToDecimal(100000000));
 
-	// // An example of code that you could use to test Task Four.
-	// // You should write additional tests of your own
-	// printf("\nTESTING TASK FOUR:\n");
-	// printf("===================\n");
-	// double grpA[5]={4.3,2.1,6.7,5.0,1.2};
-	// double grpB[10]={4.3,2.1,6.7,5.0,1.2,9.9,7.0,3.0,6.6,6.5};
-	// double medianAbilityA, medianAbilityB;
-	// medianAbilityA = MedianAbility(grpA, 5);
-	// medianAbilityB = MedianAbility(grpB, 10);
-	// printf("   Median ability Group A = %.2f\n", medianAbilityA);
-	// printf("   Median ability Group B = %.2f\n", medianAbilityB);
+	// An example of code that you could use to test Task Four.
+	// You should write additional tests of your own
+	printf("\nTESTING TASK FOUR:\n");
+	printf("===================\n");
+	// double testArray[] = {1.0,5.0,3.0,4.0,2.0};
+	// MedianAbility(testArray, 5);
+	double grpA[5]={4.3,2.1,6.7,5.0,1.2};
+	double grpB[10]={4.3,2.1,6.7,5.0,1.2,9.9,7.0,3.0,6.6,6.5};
+	double medianAbilityA, medianAbilityB;
+	medianAbilityA = MedianAbility(grpA, 5);
+	medianAbilityB = MedianAbility(grpB, 10);
+	printf("   Median ability Group A = %.2f\n", medianAbilityA);
+	printf("   Median ability Group B = %.2f\n", medianAbilityB);
 
 	// // An example of code that you could use to test Task Five.
 	// // You should write additional tests of your own

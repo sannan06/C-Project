@@ -78,10 +78,30 @@ int BinaryToDecimal(int binary)
 
 double MedianAbility(double abilities[], int length)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	return (abilities[0]+length)-(abilities[0]+length);
+	for(int i = 0; i < length; i++){
+		for(int j = (i+1); j < length; j++){
+			if(abilities[i] > abilities[j]){
+				double temp = abilities[j];
+				abilities[j] = abilities[i];
+				abilities[i] = temp;
+			}
+		}
+	}
+
+	// for(int i = 0; i < length; i++){
+	// 	printf("%f ", abilities[i]);
+	// }
+
+	// If odd number of array elements
+	if(length%2){
+		int index = (length+1)/2;
+		return abilities[index-1];
+	} else{
+		double firstValue = abilities[(length/2)-1];
+		double secondValue = abilities[length/2];
+		return ((firstValue+secondValue)/2.0);
+	}
+
 }
 
 void RemoveSpaces(char *name)
