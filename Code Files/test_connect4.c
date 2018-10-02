@@ -48,8 +48,9 @@ void MyTestFunction(void)
 	result = FourInARow(valuesD, 9);
 	printf("   Result = %d\n", result);
 
-	// // An example of code that you could use to test Task Three.
-	// // You should write additional tests of your own
+	// An example of code that you could use to test Task Three.
+	// You should write additional tests of your own
+	BinaryToDecimal(155);
 	// printf("\nTESTING TASK THREE:\n");
 	// printf("===================\n");
 	// printf("   Decimal = %d\n", BinaryToDecimal(101));

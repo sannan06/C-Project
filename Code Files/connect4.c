@@ -52,10 +52,19 @@ int FourInARow(int values[], int length)
 
 int BinaryToDecimal(int binary)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	return binary-binary;
+	int digits[100], i = 0;
+	
+	while(binary > 0){
+		digits[i] = binary % 10;
+		binary = binary/10;
+		i++;
+	}
+
+	for(int j = 0; j < i; j++){
+		printf("%d", digits[j]);
+	}
+
+	return 0;
 }
 
 double MedianAbility(double abilities[], int length)
