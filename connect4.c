@@ -12,10 +12,25 @@ DO NOT REMOVE ANY FUNCTION DEFINITIONS - they all must be present when you submi
 
 int SecondPlacePrize(int prize1, int prize2, int prize3)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	return (prize1+prize2+prize3)-(prize1+prize2+prize3);
+	if((prize1 >= prize2) && (prize1 >= prize3)){
+		if(prize2 >= prize3){
+			return prize2;
+		} else{
+			return prize3;
+		}
+	} else if((prize2 >= prize1) && (prize2 >= prize3)){
+		if(prize1 >= prize3){
+			return prize1;
+		} else{
+			return prize3;
+		}
+	} else{
+		if(prize2 >= prize1){
+			return prize2;
+		} else{
+			return prize1;
+		}
+	}
 }
 
 int FourInARow(int values[], int length)

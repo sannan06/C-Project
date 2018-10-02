@@ -28,170 +28,170 @@ void MyTestFunction(void)
 	printf("   Prize = %d\n", SecondPlacePrize(200, 100, 200));
 	printf("   Prize = %d\n", SecondPlacePrize(45, 600, 590));
 
-	// An example of code that you could use to test Task Two.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK TWO:\n");
-	printf("=================\n");
-	int valuesA[10] = {1,2,1,2,1,1,1,1,2,1};
-	int valuesB[15] = {1,2,1,2,1,1,1,2,2,1,1,4,4,4,4};
-	int valuesC[15] = {5,6,7,8,8,8,8,8,8,8,8,8,8,8,8};
-	int result;
-	result = FourInARow(valuesA, 10);
-	printf("   Result = %d\n", result);
-	result = FourInARow(valuesB, 15);
-	printf("   Result = %d\n", result);
-	result = FourInARow(valuesC, 15);
-	printf("   Result = %d\n", result);
-	result = FourInARow(valuesC, 6);
-	printf("   Result = %d\n", result);
+	// // An example of code that you could use to test Task Two.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK TWO:\n");
+	// printf("=================\n");
+	// int valuesA[10] = {1,2,1,2,1,1,1,1,2,1};
+	// int valuesB[15] = {1,2,1,2,1,1,1,2,2,1,1,4,4,4,4};
+	// int valuesC[15] = {5,6,7,8,8,8,8,8,8,8,8,8,8,8,8};
+	// int result;
+	// result = FourInARow(valuesA, 10);
+	// printf("   Result = %d\n", result);
+	// result = FourInARow(valuesB, 15);
+	// printf("   Result = %d\n", result);
+	// result = FourInARow(valuesC, 15);
+	// printf("   Result = %d\n", result);
+	// result = FourInARow(valuesC, 6);
+	// printf("   Result = %d\n", result);
 
-	// An example of code that you could use to test Task Three.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK THREE:\n");
-	printf("===================\n");
-	printf("   Decimal = %d\n", BinaryToDecimal(101));
-	printf("   Decimal = %d\n", BinaryToDecimal(1));
-	printf("   Decimal = %d\n", BinaryToDecimal(11111111));
-	printf("   Decimal = %d\n", BinaryToDecimal(100000000));
+	// // An example of code that you could use to test Task Three.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK THREE:\n");
+	// printf("===================\n");
+	// printf("   Decimal = %d\n", BinaryToDecimal(101));
+	// printf("   Decimal = %d\n", BinaryToDecimal(1));
+	// printf("   Decimal = %d\n", BinaryToDecimal(11111111));
+	// printf("   Decimal = %d\n", BinaryToDecimal(100000000));
 
-	// An example of code that you could use to test Task Four.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK FOUR:\n");
-	printf("===================\n");
-	double grpA[5]={4.3,2.1,6.7,5.0,1.2};
-	double grpB[10]={4.3,2.1,6.7,5.0,1.2,9.9,7.0,3.0,6.6,6.5};
-	double medianAbilityA, medianAbilityB;
-	medianAbilityA = MedianAbility(grpA, 5);
-	medianAbilityB = MedianAbility(grpB, 10);
-	printf("   Median ability Group A = %.2f\n", medianAbilityA);
-	printf("   Median ability Group B = %.2f\n", medianAbilityB);
+	// // An example of code that you could use to test Task Four.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK FOUR:\n");
+	// printf("===================\n");
+	// double grpA[5]={4.3,2.1,6.7,5.0,1.2};
+	// double grpB[10]={4.3,2.1,6.7,5.0,1.2,9.9,7.0,3.0,6.6,6.5};
+	// double medianAbilityA, medianAbilityB;
+	// medianAbilityA = MedianAbility(grpA, 5);
+	// medianAbilityB = MedianAbility(grpB, 10);
+	// printf("   Median ability Group A = %.2f\n", medianAbilityA);
+	// printf("   Median ability Group B = %.2f\n", medianAbilityB);
 
-	// An example of code that you could use to test Task Five.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK FIVE:\n");
-	printf("===================\n");
-	char nameA[100] = "The       Champ";
-	char nameB[100] = "     I    AM      THE     GREATEST    ";
-	char nameC[100] = "Therearenospaceshereatall";
-	RemoveSpaces(nameA);
-	RemoveSpaces(nameB);
-	RemoveSpaces(nameC);
-	printf("   Name A = [%s]\n", nameA);
-	printf("   Name B = [%s]\n", nameB);
-	printf("   Name C = [%s]\n", nameC);
+	// // An example of code that you could use to test Task Five.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK FIVE:\n");
+	// printf("===================\n");
+	// char nameA[100] = "The       Champ";
+	// char nameB[100] = "     I    AM      THE     GREATEST    ";
+	// char nameC[100] = "Therearenospaceshereatall";
+	// RemoveSpaces(nameA);
+	// RemoveSpaces(nameB);
+	// RemoveSpaces(nameC);
+	// printf("   Name A = [%s]\n", nameA);
+	// printf("   Name B = [%s]\n", nameB);
+	// printf("   Name C = [%s]\n", nameC);
 
-	// An example of code that you could use to test Task Six.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK SIX:\n");
-	printf("===================\n");
-	int board6[MAX_SIZE][MAX_SIZE];
-	for (int i = 0; i < MAX_SIZE; i++) {
-		for (int j = 0; j < MAX_SIZE; j++) {
-			board6[i][j] = -1;
-		}
-	}
-	printf("   Board of size 5x5:\n");
-	InitialiseBoard(board6, 5);
-	for (int i = 0; i < MAX_SIZE; i++) {
-		printf("   ");
-		for (int j = 0; j < MAX_SIZE; j++) {
-			printf("%d ", board6[i][j]);
-		}
-		printf("\n");
-	}
-	printf("   Board of size 8x8:\n");
-	InitialiseBoard(board6, 8);
-	for (int i = 0; i < MAX_SIZE; i++) {
-		printf("   ");
-		for (int j = 0; j < MAX_SIZE; j++) {
-			printf("%d ", board6[i][j]);
-		}
-		printf("\n");
-	}
+	// // An example of code that you could use to test Task Six.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK SIX:\n");
+	// printf("===================\n");
+	// int board6[MAX_SIZE][MAX_SIZE];
+	// for (int i = 0; i < MAX_SIZE; i++) {
+	// 	for (int j = 0; j < MAX_SIZE; j++) {
+	// 		board6[i][j] = -1;
+	// 	}
+	// }
+	// printf("   Board of size 5x5:\n");
+	// InitialiseBoard(board6, 5);
+	// for (int i = 0; i < MAX_SIZE; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < MAX_SIZE; j++) {
+	// 		printf("%d ", board6[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("   Board of size 8x8:\n");
+	// InitialiseBoard(board6, 8);
+	// for (int i = 0; i < MAX_SIZE; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < MAX_SIZE; j++) {
+	// 		printf("%d ", board6[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
 
-	// An example of code that you could use to test Task Seven.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK SEVEN:\n");
-	printf("=====================\n");
-	int board7[MAX_SIZE][MAX_SIZE];
-	int rowPosition, colPosition;
-	int size7 = 8;
-	InitialiseBoard(board7, size7);
-	AddMoveToBoard(board7, size7, 'N', 1, 1, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'E', 4, 2, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'S', 5, 1, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	for (int i = 0; i < size7; i++) {
-		printf("   ");
-		for (int j = 0; j < size7; j++) {
-			printf("%d ", board7[i][j]);
-		}
-		printf("\n");
-	}
+	// // An example of code that you could use to test Task Seven.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK SEVEN:\n");
+	// printf("=====================\n");
+	// int board7[MAX_SIZE][MAX_SIZE];
+	// int rowPosition, colPosition;
+	// int size7 = 8;
+	// InitialiseBoard(board7, size7);
+	// AddMoveToBoard(board7, size7, 'N', 1, 1, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'E', 4, 2, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'S', 5, 1, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// for (int i = 0; i < size7; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < size7; j++) {
+	// 		printf("%d ", board7[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
 
-	// An example of code that you could use to test Task Eight.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK EIGHT:\n");
-	printf("=====================\n");
-	int board8[MAX_SIZE][MAX_SIZE];
-	int rowPos, colPos;
-	int size8 = 5;
-	int hasWon;
-	InitialiseBoard(board8, size8);
-	AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
-	AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
-	AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
-	for (int i = 0; i < size8; i++) {
-		printf("   ");
-		for (int j = 0; j < size8; j++) {
-			printf("%d ", board8[i][j]);
-		}
-		printf("\n");
-	}
-	printf("   Checking for win for Player 2 in [%d, %d]\n", rowPos, colPos);
-	hasWon = CheckGameOver(board8, size8, 2, rowPos, colPos);
-	printf("   Result = %d\n", hasWon);
-	AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	for (int i = 0; i < size8; i++) {
-		printf("   ");
-		for (int j = 0; j < size8; j++) {
-			printf("%d ", board8[i][j]);
-		}
-		printf("\n");
-	}
-	printf("   Checking for win for Player 1 in [%d, %d]\n", rowPos, colPos);
-	hasWon = CheckGameOver(board8, size8, 1, rowPos, colPos);
-	printf("   Result = %d\n", hasWon);
+	// // An example of code that you could use to test Task Eight.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK EIGHT:\n");
+	// printf("=====================\n");
+	// int board8[MAX_SIZE][MAX_SIZE];
+	// int rowPos, colPos;
+	// int size8 = 5;
+	// int hasWon;
+	// InitialiseBoard(board8, size8);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	// for (int i = 0; i < size8; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < size8; j++) {
+	// 		printf("%d ", board8[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("   Checking for win for Player 2 in [%d, %d]\n", rowPos, colPos);
+	// hasWon = CheckGameOver(board8, size8, 2, rowPos, colPos);
+	// printf("   Result = %d\n", hasWon);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// for (int i = 0; i < size8; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < size8; j++) {
+	// 		printf("%d ", board8[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	// printf("   Checking for win for Player 1 in [%d, %d]\n", rowPos, colPos);
+	// hasWon = CheckGameOver(board8, size8, 1, rowPos, colPos);
+	// printf("   Result = %d\n", hasWon);
 
-	// An example of code that you could use to test Task Nine.
-	// You should write additional tests of your own
-	printf("\nTESTING TASK NINE:\n");
-	printf("====================\n");
-	int board9[MAX_SIZE][MAX_SIZE];
-	int size9 = 4;
-	char boardString[250];
-	InitialiseBoard(board9, size9);
-	GetDisplayBoardString(board9, size9, boardString);
-	printf("   The length of the board string is: %d\n", strlen(boardString));
-	printf("%s", boardString);
-	size9 = 10;
-	InitialiseBoard(board9, size9);
-	GetDisplayBoardString(board9, size9, boardString);
-	printf("   The length of the board string is: %d\n", strlen(boardString));
-	printf("%s", boardString);
+	// // An example of code that you could use to test Task Nine.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK NINE:\n");
+	// printf("====================\n");
+	// int board9[MAX_SIZE][MAX_SIZE];
+	// int size9 = 4;
+	// char boardString[250];
+	// InitialiseBoard(board9, size9);
+	// GetDisplayBoardString(board9, size9, boardString);
+	// printf("   The length of the board string is: %d\n", strlen(boardString));
+	// printf("%s", boardString);
+	// size9 = 10;
+	// InitialiseBoard(board9, size9);
+	// GetDisplayBoardString(board9, size9, boardString);
+	// printf("   The length of the board string is: %d\n", strlen(boardString));
+	// printf("%s", boardString);
 
-	// An example of code that you could use to test Task Ten.
-	printf("\nTESTING TASK TEN:\n");
-	printf("===================\n");
-	printf("   You can test Task Ten by implementing the two Bot functions in connect.c.\n");
-	printf("   If you then play a tournament, of many games, between the two bots, you \n");
-	printf("   can see which one is performing the best.  This might help you to refine \n");
-	printf("   the strategies that you are using. \n");
+	// // An example of code that you could use to test Task Ten.
+	// printf("\nTESTING TASK TEN:\n");
+	// printf("===================\n");
+	// printf("   You can test Task Ten by implementing the two Bot functions in connect.c.\n");
+	// printf("   If you then play a tournament, of many games, between the two bots, you \n");
+	// printf("   can see which one is performing the best.  This might help you to refine \n");
+	// printf("   the strategies that you are using. \n");
 
 }
 
