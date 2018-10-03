@@ -157,12 +157,92 @@ void InitialiseBoard(int board[MAX_SIZE][MAX_SIZE], int size)
 
 void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move, int player, int *lastRow, int *lastCol)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	*lastRow = 0;
-	*lastCol = 0;
-	board[0][0] = (size+side+move+player)-(size+side+move+player);
+	if(side == 'N'){
+		for(int i = 0; i < size; i++){
+			if(board[i][move] != 0){
+				if(i == 0){
+					*lastRow = -1;
+					*lastCol = -1;
+					break;
+				} else{
+					board[i-1][move] = player;
+					*lastRow = (i-1);
+					*lastCol = move;
+					break;
+				}
+			} else if(i == (size-1)){
+				board[i][move] = player;
+				*lastRow = i;
+				*lastCol = move;
+				break;	
+			}
+		}
+	} else if(side == 'S'){
+		for(int i = (size-1); i >= 0; i--){
+			// printf("Testing row: %d, column: %d\n", i, move);
+			if(board[i][move] != 0){
+				if(i == (size-1)){
+					// printf("Working\n");
+					*lastRow = -1;
+					*lastCol = -1;
+					break;
+				} else{
+					// printf("Entered here\n");
+					board[i+1][move] = player;
+					*lastRow = (i+1);
+					*lastCol = move;
+					break;
+				}
+			} else if(i == 0){
+				// printf("Reached end of grid\n");
+				board[i][move] = player;
+				*lastRow = i;
+				*lastCol = move;
+				break;
+			}
+		}		
+	} else if(side == 'E'){
+		for(int i = (size - 1); i >= 0; i--){
+			// printf("Testing row: %d, column: %d\n", move, i);
+			if(board[move][i] != 0){
+				if(i == (size-1)){
+					*lastRow = -1;
+					*lastCol = -1;
+					break;
+				} else{
+					board[move][i+1] = player;
+					*lastRow = move;
+					*lastCol = (i+1);
+					break;
+				}
+			} else if(i == 0){
+				board[move][i] = player;
+				*lastRow = move;
+				*lastCol = i;
+				break;
+			}
+		}
+	} else{
+		for(int i = 0; i < size; i++){
+			if(board[move][i] != 0){
+				if(i == 0){
+					*lastCol = -1;
+					*lastRow = -1;
+					break;
+				} else{
+					board[move][i-1] = player;
+					*lastRow = move;
+					*lastCol = (i+1);
+					break;
+				}
+			} else if(i == (size-1)){
+				board[move][i] = player;
+				*lastRow = move;
+				*lastCol = i;
+				break;
+			}
+		}
+	}
 }
 
 int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, int col)
