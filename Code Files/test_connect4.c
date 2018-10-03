@@ -90,34 +90,34 @@ void MyTestFunction(void)
 	printf("   Name B = [%s]\n", nameB);
 	printf("   Name C = [%s]\n", nameC);
 
-	// // An example of code that you could use to test Task Six.
-	// // You should write additional tests of your own
-	// printf("\nTESTING TASK SIX:\n");
-	// printf("===================\n");
-	// int board6[MAX_SIZE][MAX_SIZE];
-	// for (int i = 0; i < MAX_SIZE; i++) {
-	// 	for (int j = 0; j < MAX_SIZE; j++) {
-	// 		board6[i][j] = -1;
-	// 	}
-	// }
-	// printf("   Board of size 5x5:\n");
-	// InitialiseBoard(board6, 5);
-	// for (int i = 0; i < MAX_SIZE; i++) {
-	// 	printf("   ");
-	// 	for (int j = 0; j < MAX_SIZE; j++) {
-	// 		printf("%d ", board6[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("   Board of size 8x8:\n");
-	// InitialiseBoard(board6, 8);
-	// for (int i = 0; i < MAX_SIZE; i++) {
-	// 	printf("   ");
-	// 	for (int j = 0; j < MAX_SIZE; j++) {
-	// 		printf("%d ", board6[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
+	// An example of code that you could use to test Task Six.
+	// You should write additional tests of your own
+	printf("\nTESTING TASK SIX:\n");
+	printf("===================\n");
+	int board6[MAX_SIZE][MAX_SIZE];
+	for (int i = 0; i < MAX_SIZE; i++) {
+		for (int j = 0; j < MAX_SIZE; j++) {
+			board6[i][j] = -1;
+		}
+	}
+	printf("   Board of size 5x5:\n");
+	InitialiseBoard(board6, 5);
+	for (int i = 0; i < MAX_SIZE; i++) {
+		printf("   ");
+		for (int j = 0; j < MAX_SIZE; j++) {
+			printf("%d ", board6[i][j]);
+		}
+		printf("\n");
+	}
+	printf("   Board of size 8x8:\n");
+	InitialiseBoard(board6, 8);
+	for (int i = 0; i < MAX_SIZE; i++) {
+		printf("   ");
+		for (int j = 0; j < MAX_SIZE; j++) {
+			printf("%d ", board6[i][j]);
+		}
+		printf("\n");
+	}
 
 	// // An example of code that you could use to test Task Seven.
 	// // You should write additional tests of your own

@@ -135,10 +135,24 @@ void RemoveSpaces(char *name)
 
 void InitialiseBoard(int board[MAX_SIZE][MAX_SIZE], int size)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	board[0][0] = size-size-1;
+	// Set everything within size = 0
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			board[i][j] = 0;
+		}
+	}
+
+	if(size%2){
+		int middle = size/2; 
+		board[middle][middle] = 3;
+	} else{
+		int middle = size/2;
+		board[middle][middle] = 3;
+		board[middle][middle-1] = 3;
+		board[middle-1][middle] = 3;
+		board[middle-1][middle-1] = 3;
+	}
+
 }
 
 void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move, int player, int *lastRow, int *lastCol)
