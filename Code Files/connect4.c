@@ -247,19 +247,131 @@ void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move
 
 int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, int col)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	return (board[0][0]+size+player+row+col)-(board[0][0]+size+player+row+col);
+	// 1. Check if there are any available moves
+	// 2. Check if the last placed token makes 4 in a row
+
+	int counter = 0, converged = 0, i = 0;
+	// Checking for available moves
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			if(((i == 0) || (i == (size-1))) && (board[i][j] != 0)){
+				counter++;
+			} else if(((j == 0) || (j == (size-1))) && (board[i][j] != 0)){
+				counter++;
+			}
+		}
+	}
+	if(counter == (2*size + 2*(size-2))){
+		return ((player%2) + 1);
+	}
+
+	// while(!converged){
+		
+	// }
+
+	return 0;
+
+}
+
+void Append(char* s, char c) {
+        int len = strlen(s);
+        s[len] = c;
+        s[len+1] = '\0';
 }
 
 void GetDisplayBoardString(int board[MAX_SIZE][MAX_SIZE], int size, char *boardString)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	board[0][0] = size-size;
 	boardString[0] = '\0';
+	// Create out the NORTH headings
+		for(int i = 0; i < (size+4); i++){
+			if((i == 0) || (i == 1) || (i == (size+2))){
+				// printf("%d, %d\n", strlen(boardString), i);
+				Append(boardString, '-');
+			} else if(i == (size+3)){
+				// printf("%d, %d\n", strlen(boardString), i);
+				Append(boardString, '-');
+				Append(boardString, '\n');
+			} else if ((i > 1) && (i < (size+2))){
+				// printf("%d, %d\n", strlen(boardString), i);
+				Append(boardString, 'N');
+			}
+		}
+
+	// Create the north numbers
+	for(int i = 0; i < (size+4); i++){
+		if((i == 0) || (i == 1) || (i == (size+2))){
+			// printf("%d, %d\n", strlen(boardString), i);
+			Append(boardString, '-');
+		} else if(i == (size+3)){
+			// printf("%d, %d\n", strlen(boardString), i);
+			Append(boardString, '-');
+			Append(boardString, '\n');
+		} else if ((i > 1) && (i < (size+2))){
+			// printf("%d, %d\n", strlen(boardString), i);
+			char numToStore = '0' + (i-2);
+			Append(boardString, numToStore);
+		}
+	}
+
+	// Create the middle shit
+	int index;
+	for(int j = 0; j < size; j++){
+		for(int i = 0; i < (size+4); i++){
+			if(i == 0){
+				Append(boardString, 'W');
+			} else if(i == 1){
+				char numToStore = '0' + j;
+				Append(boardString, numToStore);
+			} else if(i == (size+2)){
+				char numToStore = '0' + j;
+				Append(boardString, numToStore);
+			} else if(i == (size+3)){
+				Append(boardString, 'E');
+				Append(boardString, '\n');
+			} else if ((i > 1) && (i < (size+2))){
+				if(board[j][i-2] == 0){
+					Append(boardString, '.');
+				} else if(board[j][i-2] == 3){
+					Append(boardString, '#');
+				} else if(board[j][i-2] == 1){
+					Append(boardString, 'X');
+				} else if(board[j][i-2] == 2){
+					Append(boardString, 'O');
+				}
+			}
+		}
+	}
+
+	// Create the SOUTH numbers
+	for(int i = 0; i < (size+4); i++){
+		if((i == 0) || (i == 1) || (i == (size+2))){
+			// printf("%d, %d\n", strlen(boardString), i);
+			Append(boardString, '-');
+		} else if(i == (size+3)){
+			// printf("%d, %d\n", strlen(boardString), i);
+			Append(boardString, '-');
+			Append(boardString, '\n');
+		} else if ((i > 1) && (i < (size+2))){
+			// printf("%d, %d\n", strlen(boardString), i);
+			char numToStore = '0' + (i-2);
+			Append(boardString, numToStore);
+		}
+	}
+
+	// Create the SOUTH headings
+		for(int i = 0; i < (size+4); i++){
+			if((i == 0) || (i == 1) || (i == (size+2))){
+				// printf("%d, %d\n", strlen(boardString), i);
+				Append(boardString, '-');
+			} else if(i == (size+3)){
+				// printf("%d, %d\n", strlen(boardString), i);
+				Append(boardString, '-');
+				Append(boardString, '\n');
+			} else if ((i > 1) && (i < (size+2))){
+				// printf("%d, %d\n", strlen(boardString), i);
+				Append(boardString, 'S');
+			}
+		}
 }
 
 void GetMoveBot1(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move)

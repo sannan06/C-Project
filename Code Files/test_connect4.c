@@ -164,6 +164,11 @@ void MyTestFunction(void)
 	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
 	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
 	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	// // for(int i = 0; i < size8; i++){
+	// // 	for(int j = 0; j < size8; j++){
+	// // 		board8[i][j] = 5;
+	// // 	}
+	// // }
 	// for (int i = 0; i < size8; i++) {
 	// 	printf("   ");
 	// 	for (int j = 0; j < size8; j++) {
@@ -186,22 +191,38 @@ void MyTestFunction(void)
 	// hasWon = CheckGameOver(board8, size8, 1, rowPos, colPos);
 	// printf("   Result = %d\n", hasWon);
 
-	// // An example of code that you could use to test Task Nine.
-	// // You should write additional tests of your own
-	// printf("\nTESTING TASK NINE:\n");
-	// printf("====================\n");
-	// int board9[MAX_SIZE][MAX_SIZE];
-	// int size9 = 4;
-	// char boardString[250];
-	// InitialiseBoard(board9, size9);
-	// GetDisplayBoardString(board9, size9, boardString);
-	// printf("   The length of the board string is: %d\n", strlen(boardString));
-	// printf("%s", boardString);
-	// size9 = 10;
-	// InitialiseBoard(board9, size9);
-	// GetDisplayBoardString(board9, size9, boardString);
-	// printf("   The length of the board string is: %d\n", strlen(boardString));
-	// printf("%s", boardString);
+	// An example of code that you could use to test Task Nine.
+	// You should write additional tests of your own
+	printf("\nTESTING TASK NINE:\n");
+	printf("====================\n");
+	int board9[MAX_SIZE][MAX_SIZE];
+	int size9 = 4;
+	char boardString[250];
+	printf("String is : %s\n", boardString);
+	InitialiseBoard(board9, size9);
+	GetDisplayBoardString(board9, size9, boardString);
+	// 	for (int i = 0; i < size9; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < size9; j++) {
+	// 		printf("%d ", board9[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	printf("   The length of the board string is: %d\n", strlen(boardString));
+	printf("%s", boardString);
+	size9 = 10;
+	InitialiseBoard(board9, size9);
+	// for (int i = 0; i < size9; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < size9; j++) {
+	// 		printf("%d ", board9[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	AddMoveToBoard(board9, size9, 'E', 4, 1, &rowPosition, &colPosition);
+	GetDisplayBoardString(board9, size9, boardString);
+	printf("   The length of the board string is: %d\n", strlen(boardString));
+	printf("%s", boardString);
 
 	// // An example of code that you could use to test Task Ten.
 	// printf("\nTESTING TASK TEN:\n");
