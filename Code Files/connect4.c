@@ -222,7 +222,7 @@ void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move
 				break;
 			}
 		}
-	} else{
+	} else if(side == 'W'){
 		for(int i = 0; i < size; i++){
 			if(board[move][i] != 0){
 				if(i == 0){
@@ -232,7 +232,7 @@ void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move
 				} else{
 					board[move][i-1] = player;
 					*lastRow = move;
-					*lastCol = (i+1);
+					*lastCol = (i-1);
 					break;
 				}
 			} else if(i == (size-1)){
@@ -252,6 +252,8 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 
 	int counter = 0, i = 0, j = 0;
 	int valuesToCheck[4];
+	printf("Move made in row: %d, col: %d\n", row, col);
+	/* -------------- THIS IS BROKEN FOR SOME STUPID FUCKING REASON ------------------------- */
 
 	// Checking for available moves (DONE)
 	for(int i = 0; i < size; i++){
@@ -266,50 +268,65 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 	if(counter == (2*size + 2*(size-2))){
 		return player;
 	}
+	j = 0;
 
 	/* -------- PROPOGATE HORIZONTALLY (DONE) ----------- */
 
 	// Check if point to right is player
 	if(board[row][col+1] == player){
+		printf("point to col+1 is player\n");
 		j++;
 		// If point to right of that is also player
 		if(board[row][col+2] == player){
+			printf("point to col+2 is player\n");
 			j++;
 			// Check if point further right is also player
 			if(board[row][col+3] == player){
+				printf("point to col+3 is player\n");
 				j++;
 			}
 		}
 		// If not, check point to immediate left
 		if(board[row][col-1] == player){
+			// printf("col-1: %d\n", board[row][col-1]);
+			printf("point to col-1 is player\n");
 			j++;
 			// Check if point to left of that is player
 			if(board[row][col-2] == player){
+				// printf("col-2: %d\n", board[row][col-1]);
+				printf("point to col-2 is player\n");
 				j++;
 			}
 		}
 	}
 	// CHECK IF POINT TO LEFT IS PLAYER
 	if(board[row][col-1] == player){
+		printf("point to col-1 is player\n");
 		j++;
 		// If point to left of that is also player
 		if(board[row][col-2] == player){
+			printf("point to col-2 is player\n");
 			j++;
 			// Check if point further left is also player
 			if(board[row][col-3] == player){
+				printf("point to col-3 is player\n");
 				j++;
 			}
 		}
 		// If not, check point to immediate right
 		if(board[row][col+1] == player){
+			printf("point to col+1 is player\n");
 			j++;
 			// Check if point to right of that is player
 			if(board[row][col+2] == player){
+				printf("point to col+2 is player\n");
 				j++;
 			}
 		}
 	}
 	if(j >= 3){
+		printf("j = %d\n", j);
+		printf("Won Horizontally\n");
 		return player;
 	} else{
 		j = 0;
@@ -357,13 +374,105 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 	}
 		
 	if(j >= 3){
+		printf("Won Vertically\n");
 		return player;
 	} else{
 		j = 0;
 	}
 
-	return 0;
+	/* ---------- PROPOGATE POSITIVELY DIAGONALLY ---------- */
 
+	// Check if point to top-right is player
+	if(board[row-1][col+1] == player){
+		j++;
+		// Check if point top-right to that is also player
+		if(board[row-2][col+2] == player){
+			j++;
+			// Check if next point across is also player
+			if(board[row-3][col+3] == player){
+				j++;
+			}
+		} // Check if point to bottom-left is player
+		if(board[row+1][col-1] == player){
+			j++;
+			// Check if point below that is also player
+			if(board[row+2][col-2] == player){
+				j++;
+			}
+		}
+	}
+	// Check if point to bottom-left is player
+	if(board[row+1][col-1] == player){
+		j++;
+		// Check if point bottom-left to that is also player
+		if(board[row+2][col-2] == player){
+			j++;
+			// Check if next point down is also player
+			if(board[row+3][col-3] == player){
+				j++;
+			}
+		} // Check if point to top-right is player
+		if(board[row-1][col+1] == player){
+			j++;
+			// Check if point above that is also player
+			if(board[row-2][col+2] == player){
+				j++;
+			}
+		}
+	}
+
+	if(j >= 3){
+		return player;
+		printf("WON DIAGONALLY (+)\n");
+	} else{
+		j = 0;
+	}
+	/* ---------- PROPOGATE NEGATIVELY DIAGONALLY ---------- */
+
+	// Check if point to top-left is player
+	if(board[row-1][col-1] == player){
+		j++;
+		// Check if point top-left to that is also player
+		if(board[row-2][col-2] == player){
+			j++;
+			// Check if next point across is also player
+			if(board[row-3][col-3] == player){
+				j++;
+			}
+		} // Check if point to bottom-right is player
+		if(board[row+1][col+1] == player){
+			j++;
+			// Check if point below that is also player
+			if(board[row+2][col+2] == player){
+				j++;
+			}
+		}
+	}
+	// Check if point to bottom-right is player
+	if(board[row+1][col+1] == player){
+		j++;
+		// Check if point bottom-right to that is also player
+		if(board[row+2][col+2] == player){
+			j++;
+			// Check if next point down is also player
+			if(board[row+3][col+3] == player){
+				j++;
+			}
+		} // Check if point to top-left is player
+		if(board[row-1][col-1] == player){
+			j++;
+			// Check if point above that is also player
+			if(board[row-2][col-2] == player){
+				j++;
+			}
+		}
+	}
+	if(j >= 3){
+		return player;
+		printf("WON DIAGONALLY (-)\n");
+	} else{
+		return 0;
+	}
 }
 
 void Append(char* s, char c) {
