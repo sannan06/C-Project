@@ -247,11 +247,13 @@ void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move
 
 int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, int col)
 {
-	// 1. Check if there are any available moves
+	// 1. Check if there are any available moves (DONE)
 	// 2. Check if the last placed token makes 4 in a row
 
-	int counter = 0, converged = 0, i = 0;
-	// Checking for available moves
+	int counter = 0, i = 0, j = 0;
+	int valuesToCheck[4];
+
+	// Checking for available moves (DONE)
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			if(((i == 0) || (i == (size-1))) && (board[i][j] != 0)){
@@ -262,12 +264,103 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 		}
 	}
 	if(counter == (2*size + 2*(size-2))){
-		return ((player%2) + 1);
+		return player;
 	}
 
-	// while(!converged){
+	/* -------- PROPOGATE HORIZONTALLY (DONE) ----------- */
+
+	// Check if point to right is player
+	if(board[row][col+1] == player){
+		j++;
+		// If point to right of that is also player
+		if(board[row][col+2] == player){
+			j++;
+			// Check if point further right is also player
+			if(board[row][col+3] == player){
+				j++;
+			}
+		}
+		// If not, check point to immediate left
+		if(board[row][col-1] == player){
+			j++;
+			// Check if point to left of that is player
+			if(board[row][col-2] == player){
+				j++;
+			}
+		}
+	}
+	// CHECK IF POINT TO LEFT IS PLAYER
+	if(board[row][col-1] == player){
+		j++;
+		// If point to left of that is also player
+		if(board[row][col-2] == player){
+			j++;
+			// Check if point further left is also player
+			if(board[row][col-3] == player){
+				j++;
+			}
+		}
+		// If not, check point to immediate right
+		if(board[row][col+1] == player){
+			j++;
+			// Check if point to right of that is player
+			if(board[row][col+2] == player){
+				j++;
+			}
+		}
+	}
+	if(j >= 3){
+		return player;
+	} else{
+		j = 0;
+	}
+	
+	/* ---------- PROPOGATE VERTICALLY (DONE) ----------- */
+
+	// Check if point immediately above is player
+	if(board[row+1][col] == player){
+		j++;
+		// Check is point above that is also player
+		if(board[row+2][col] == player){
+			j++;
+			// Check if point above previous point is also player
+			if(board[row+3][col] == player){
+				j++;
+			}
+		} // Check point BELOW player's point
+		if(board[row-1][col] == player){
+			j++;
+			//  Check if point below THAT is also player
+			if(board[row-2][col] == player){
+				j++;
+			}		
+		}
+	}
+	// Check if point immediately below is player
+	if(board[row-1][col] == player){
+		j++;
+		// Check is point below that is also player
+		if(board[row-2][col] == player){
+			j++;
+			// Check if point below previous point is also player
+			if(board[row-3][col] == player){
+				j++;
+			}
+		} // Else, check point ABOVE player's point
+		if(board[row+1][col] == player){
+			j++;
+			//  Check if point above THAT is also player
+			if(board[row+2][col] == player){
+				j++;
+			}		
+		}
+	}
 		
-	// }
+	if(j >= 3){
+		return player;
+	} else{
+		j = 0;
+	}
 
 	return 0;
 
