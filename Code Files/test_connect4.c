@@ -119,98 +119,98 @@ void MyTestFunction(void)
 		printf("\n");
 	}
 
-	// An example of code that you could use to test Task Seven.
+	// // An example of code that you could use to test Task Seven.
+	// // You should write additional tests of your own
+	// printf("\nTESTING TASK SEVEN:\n");
+	// printf("=====================\n");
+	// int board7[MAX_SIZE][MAX_SIZE];
+	// int rowPosition, colPosition;
+	// int size7 = 8;
+	// InitialiseBoard(board7, size7);
+	// // AddMoveToBoard(board7, size7, 'N', 1, 1, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// // AddMoveToBoard(board7, size7, 'E', 4, 2, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// // AddMoveToBoard(board7, size7, 'S', 5, 1, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// // AddMoveToBoard(board7, size7, 'W', 3, 1, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// // AddMoveToBoard(board7, size7, 'N', 1, 1, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// // AddMoveToBoard(board7, size7, 'S', 1, 1, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// // AddMoveToBoard(board7, size7, 'E', 4, 1, &rowPosition, &colPosition);
+	// // printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'W', 0, 1, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'W', 0, 2, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'W', 0, 1, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'W', 1, 2, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// AddMoveToBoard(board7, size7, 'W', 0, 1, &rowPosition, &colPosition);
+	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
+	// for (int i = 0; i < size7; i++) {
+	// 	printf("   ");
+	// 	for (int j = 0; j < size7; j++) {
+	// 		printf("%d ", board7[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	// An example of code that you could use to test Task Eight.
 	// You should write additional tests of your own
-	printf("\nTESTING TASK SEVEN:\n");
+	printf("\nTESTING TASK EIGHT:\n");
 	printf("=====================\n");
-	int board7[MAX_SIZE][MAX_SIZE];
-	int rowPosition, colPosition;
-	int size7 = 8;
-	InitialiseBoard(board7, size7);
-	// AddMoveToBoard(board7, size7, 'N', 1, 1, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	// AddMoveToBoard(board7, size7, 'E', 4, 2, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	// AddMoveToBoard(board7, size7, 'S', 5, 1, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	// AddMoveToBoard(board7, size7, 'W', 3, 1, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	// AddMoveToBoard(board7, size7, 'N', 1, 1, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	// AddMoveToBoard(board7, size7, 'S', 1, 1, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	// AddMoveToBoard(board7, size7, 'E', 4, 1, &rowPosition, &colPosition);
-	// printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'W', 0, 1, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'W', 0, 2, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'W', 0, 1, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'W', 1, 2, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	AddMoveToBoard(board7, size7, 'W', 0, 1, &rowPosition, &colPosition);
-	printf("   Token position: row=%d, col=%d\n", rowPosition, colPosition);
-	for (int i = 0; i < size7; i++) {
+	int board8[MAX_SIZE][MAX_SIZE];
+	int rowPos, colPos;
+	int size8 = 5;
+	int hasWon;
+	InitialiseBoard(board8, size8);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'W', 0, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'W', 0, 1, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'W', 0, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'W', 1, 1, &rowPos, &colPos);
+	// AddMoveToBoard(board8, size8, 'W', 0, 1, &rowPos, &colPos);
+	// for(int i = 0; i < size8; i++){
+	// 	for(int j = 0; j < size8; j++){
+	// 		board8[i][j] = 5;
+	// 	}
+	// }
+	for (int i = 0; i < size8; i++) {
 		printf("   ");
-		for (int j = 0; j < size7; j++) {
-			printf("%d ", board7[i][j]);
+		for (int j = 0; j < size8; j++) {
+			printf("%d ", board8[i][j]);
 		}
 		printf("\n");
 	}
-
-	// // An example of code that you could use to test Task Eight.
-	// // You should write additional tests of your own
-	// printf("\nTESTING TASK EIGHT:\n");
-	// printf("=====================\n");
-	// int board8[MAX_SIZE][MAX_SIZE];
-	// int rowPos, colPos;
-	// int size8 = 5;
-	// int hasWon;
-	// InitialiseBoard(board8, size8);
-	// // AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	// // AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
-	// // AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	// // AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
-	// // AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	// // AddMoveToBoard(board8, size8, 'N', 1, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'W', 0, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'W', 0, 1, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'W', 0, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'W', 1, 1, &rowPos, &colPos);
-	// // AddMoveToBoard(board8, size8, 'W', 0, 1, &rowPos, &colPos);
-	// // for(int i = 0; i < size8; i++){
-	// // 	for(int j = 0; j < size8; j++){
-	// // 		board8[i][j] = 5;
-	// // 	}
-	// // }
-	// for (int i = 0; i < size8; i++) {
-	// 	printf("   ");
-	// 	for (int j = 0; j < size8; j++) {
-	// 		printf("%d ", board8[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("   Checking for win for Player 2 in [%d, %d]\n", rowPos, colPos);
-	// hasWon = CheckGameOver(board8, size8, 2, rowPos, colPos);
-	// printf("   Result = %d\n", hasWon);
-	// AddMoveToBoard(board8, size8, 'W', 0, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'W', 1, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'W', 1, 1, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'S', 1, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'S', 1, 1, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'N', 0, 2, &rowPos, &colPos);
-	// AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
-	// for (int i = 0; i < size8; i++) {
-	// 	printf("   ");
-	// 	for (int j = 0; j < size8; j++) {
-	// 		printf("%d ", board8[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// printf("   Checking for win for Player 1 in [%d, %d]\n", rowPos, colPos);
-	// hasWon = CheckGameOver(board8, size8, 1, rowPos, colPos);
-	// printf("   Result = %d\n", hasWon);
+	printf("   Checking for win for Player 2 in [%d, %d]\n", rowPos, colPos);
+	hasWon = CheckGameOver(board8, size8, 2, rowPos, colPos);
+	printf("   Result = %d\n", hasWon);
+	AddMoveToBoard(board8, size8, 'W', 0, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'W', 1, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'W', 1, 1, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'S', 1, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'S', 1, 1, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'N', 0, 2, &rowPos, &colPos);
+	AddMoveToBoard(board8, size8, 'N', 0, 1, &rowPos, &colPos);
+	for (int i = 0; i < size8; i++) {
+		printf("   ");
+		for (int j = 0; j < size8; j++) {
+			printf("%d ", board8[i][j]);
+		}
+		printf("\n");
+	}
+	printf("   Checking for win for Player 1 in [%d, %d]\n", rowPos, colPos);
+	hasWon = CheckGameOver(board8, size8, 1, rowPos, colPos);
+	printf("   Result = %d\n", hasWon);
 
 	// An example of code that you could use to test Task Nine.
 	// You should write additional tests of your own
