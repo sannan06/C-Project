@@ -4,7 +4,7 @@
 #include "connect4.h"
 
 /*
-*** Please replace this comment with your name and ID number ***
+*** Sannan Hafeez 634451649 ***
 This is the file that you will be submitting for marking
 Complete the definitions of the functions in this file
 DO NOT REMOVE ANY FUNCTION DEFINITIONS - they all must be present when you submit this file
@@ -245,50 +245,75 @@ void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move
 	}
 }
 
-int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int rowIndex[], int colIndex[]){
+int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int rowIndex[], int colIndex[], int size){
 
 	int j = 0;
 
-	if(board[rowIndex[0]][colIndex[0]] == player){
-		j++;
-		if(board[rowIndex[1]][colIndex[1]] == player){
+	if((rowIndex[0] > 0) && (rowIndex[0] < size) && (colIndex[0] > 0) && (colIndex[0] < size)){
+		// printf("About to access row: %d, col: %d\n", rowIndex[0], colIndex[0]);
+		if(board[rowIndex[0]][colIndex[0]] == player){
 			j++;
-			if(board[rowIndex[2]][colIndex[2]] == player){
-				j++;
-			}
-		}
-		if(board[rowIndex[3]][colIndex[3]] == player){
-			j++;
-			if(board[rowIndex[4]][colIndex[4]] == player){
-				j++;
+			if((rowIndex[1] > 0) && (rowIndex[1] < size) && (colIndex[1] > 0) && (colIndex[1] < size)){
+				// printf("About to access row: %d, col: %d\n", rowIndex[1], colIndex[1]);
+				if(board[rowIndex[1]][colIndex[1]] == player){
+					j++;
+					if((rowIndex[2] > 0) && (rowIndex[2] < size) && (colIndex[2] > 0) && (colIndex[2] < size)){
+						// printf("About to access row: %d, col: %d\n", rowIndex[2], colIndex[2]);
+						if(board[rowIndex[2]][colIndex[2]] == player){
+							j++;
+						}
+					}
+				}
+				if((rowIndex[3] > 0) && (rowIndex[3] < size) && (colIndex[3] > 0) && (colIndex[3] < size)){
+					// printf("About to access row: %d, col: %d\n", rowIndex[3], colIndex[3]);
+					if(board[rowIndex[3]][colIndex[3]] == player){
+						j++;
+						if((rowIndex[4] > 0) && (rowIndex[4] < size) && (colIndex[4] > 0) && (colIndex[4] < size)){
+							// printf("About to access row: %d, col: %d\n", rowIndex[4], colIndex[4]);
+							if(board[rowIndex[4]][colIndex[4]] == player){
+								j++;
+							}
+						}
+					}	
+				}
 			}
 		}
 	}
-	if(board[rowIndex[3]][colIndex[3]] == player){
-		j++;
-		if(board[rowIndex[4]][colIndex[4]] == player){
+
+	if((rowIndex[3] > 0) && (rowIndex[3] < size) && (colIndex[3] > 0) && (colIndex[3] < size)){
+		if(board[rowIndex[3]][colIndex[3]] == player){
 			j++;
-			if(board[rowIndex[5]][colIndex[5]] == player){
-				j++;
+			if((rowIndex[4] > 0) && (rowIndex[4] < size) && (colIndex[4] > 0) && (colIndex[4] < size)){
+				if(board[rowIndex[4]][colIndex[4]] == player){
+					j++;
+					if((rowIndex[4] > 0) && (rowIndex[4] < size) && (colIndex[4] > 0) && (colIndex[4] < size)){
+						// printf("About to access row: %d, col: %d\n", rowIndex[5], colIndex[5]);
+						if(board[rowIndex[5]][colIndex[5]] == player){
+							j++;
+						}
+					}
+				}
 			}
-		}
-		if(board[rowIndex[0]][colIndex[0]] == player){
-			j++;
-			if(board[rowIndex[1]][colIndex[1]] == player){
-				j++;
+			if((rowIndex[0] > 0) && (rowIndex[0] < size) && (colIndex[0] > 0) && (colIndex[0] < size)){
+				if(board[rowIndex[0]][colIndex[0]] == player){
+					j++;
+					if((rowIndex[0] > 0) && (rowIndex[0] < size) && (colIndex[0] > 0) && (colIndex[0] < size)){
+						if(board[rowIndex[1]][colIndex[1]] == player){
+							j++;
+						}
+					}
+				}
 			}
 		}
 	}
 	return j;
-	}
+}
 	
 int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, int col)
 {
 	int counter = 0, i = 0, j = 0;
-	int valuesToCheck[4];
-	/* -------------- this is no longer broken :)))) ------------------------- */
 
-	// Checking for available moves (DONE)
+	// Checking for available moves
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			if(((i == 0) || (i == (size-1))) && (board[i][j] != 0)){
@@ -296,8 +321,8 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 			} else if(((j == 0) || (j == (size-1))) && (board[i][j] != 0)){
 				counter++;
 			}
-			}		
-		}
+		}		
+	}
 	if(counter == (2*size + 2*(size-2))){
 		return player;
 	}
@@ -316,7 +341,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 
 
 	// Carry out horizontal propogation
-	j = DoPropogation(board, player, rowIndex1, colIndex1);
+	j = DoPropogation(board, player, rowIndex1, colIndex1, size);
 	if(j >= 3){
 		return player;
 	} else{
@@ -324,7 +349,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 	}
 
 	// Carry out vertical propogation
-	j = DoPropogation(board, player, rowIndex2, colIndex2);
+	j = DoPropogation(board, player, rowIndex2, colIndex2, size);
 	if(j >= 3){
 		return player;
 	} else{
@@ -332,7 +357,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 	}
 
 	// Carry out positive diagonal propogation
-	j = DoPropogation(board, player, rowIndex3, colIndex1);
+	j = DoPropogation(board, player, rowIndex3, colIndex1, size);
 	if(j >= 3){
 		return player;
 	} else{
@@ -340,7 +365,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 	}
 
 	// Carry out negative diagonal propogation
-	j = DoPropogation(board, player, rowIndex3, colIndex3);
+	j = DoPropogation(board, player, rowIndex3, colIndex3, size);
 	if(j >= 3){
 		return player;
 	} else{
@@ -389,7 +414,7 @@ void GetDisplayBoardString(int board[MAX_SIZE][MAX_SIZE], int size, char *boardS
 		}
 	}
 
-	// Create the middle shit
+	// Create the middle stuff
 	int index;
 	for(int j = 0; j < size; j++){
 		for(int i = 0; i < (size+4); i++){
@@ -450,22 +475,203 @@ void GetDisplayBoardString(int board[MAX_SIZE][MAX_SIZE], int size, char *boardS
 		}
 }
 
+void GetHeadingAndMove(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move, int row, int col)
+{
+	// Drop a move in every possible place until it lands in the right place :))))
+	int lastRow, lastCol;
+
+	// Try North
+	for(int i = 0; i < size; i++){
+		AddMoveToBoard(board, size, 'N', i, player, &lastRow, &lastCol);
+		if((lastRow == row) && (lastCol == col)){
+			*side = 'N';
+			*move = i;
+			return;
+		}
+	}
+
+	// Try South
+	for(int i = 0; i < size; i++){
+		AddMoveToBoard(board, size, 'S', i, player, &lastRow, &lastCol);
+		if((lastRow == row) && (lastCol == col)){
+			*side = 'S';
+			*move = i;
+			return;
+		}
+	}
+
+	// Try East
+	for(int i = 0; i < size; i++){
+		AddMoveToBoard(board, size, 'E', i, player, &lastRow, &lastCol);
+		if((lastRow == row) && (lastCol == col)){
+			*side = 'E';
+			*move = i;
+			return;
+		}
+	}
+
+	// Try West
+	for(int i = 0; i < size; i++){
+		AddMoveToBoard(board, size, 'W', i, player, &lastRow, &lastCol);
+		if((lastRow == row) && (lastCol == col)){
+			*side = 'W';
+			*move = i;
+			return;
+		}
+	}
+
+}
+
 void GetMoveBot1(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	*side = 'N';
-	*move = 0;
-	board[0][0] = (size+player)-(size+player);
+
+	int notValid = 1, randHeading, chosenMove, result = 0;
+	char chosenHeading;
+	int tempBoard[MAX_SIZE][MAX_SIZE];
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			tempBoard[i][j] = board[i][j];
+		}
+	}
+
+	// Loop through the board
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			// For every place there is no token
+			if(board[i][j] == 0){
+				// Set that position to player
+				board[i][j] = player;
+				// See if that would result in a win
+				result = CheckGameOver(board, size, player, i, j);
+				// Reset that position back to 0
+				board[i][j] = 0;
+				// If it would result in a win
+				if(result == player){
+					// See what side and move would be needed to make that move
+					GetHeadingAndMove(board, size, player, side, move, i, j);
+					// Then quit the function
+					return;
+				}
+			}
+		}
+	}
+
+	// for (int k = 0; k < size; k++) {
+	// 	printf("   ");
+	// 	for (int l = 0; l < size; l++) {
+	// 		printf("%d ", tempBoard[k][l]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	/* ----------- Check for winning moves --------------- */
+	// 1. Loop through board
+	// 2. Consider points which are 0 (no token placed)
+	// 3. If placing a token there can make 4 in a row, place it
+	// 4. i.e. if there are 3 in a row adjacent to it
+
+	// for(int i = 0; i < size; i++){
+	// 	for(int j = 0; j < size; j++){
+	// 		if(board[i][j] == 0){
+	// 			tempBoard[i][j] = player;
+	// 			result = CheckGameOver(tempBoard, size, player, i, j);
+	// 			// printf("result: %d\n", result);
+	// 			if(result != 0){
+	// 				// printf("Found 3 in a row ");
+	// 				// printf("in row %d column %d\n", i, j);
+	// 				// for (int k = 0; k < size; k++) {
+	// 				// 	printf("   ");
+	// 				// 	for (int l = 0; l < size; l++) {
+	// 				// 		printf("%d ", tempBoard[k][l]);
+	// 				// 	}
+	// 				// 	printf("\n");
+	// 				// }
+	// 				GetHeadingAndMove(board, size, player, side, move, i, j);
+	// 				// printf("move will go in side %c move %d\n", *side, *move);
+	// 				tempBoard[i][j] = 0;
+	// 				return;
+	// 			}
+	// 			tempBoard[i][j] = 0;
+	// 		}
+	// 	}
+	// }
+
+	/* ------------- Return any valid, random move ------------- */
+	while(notValid){
+		// Pick a move number
+		chosenMove = (rand() % size);
+		randHeading = (rand() % 4);
+
+		// Pick a heading, and check validity
+		if(randHeading == 0){
+			chosenHeading = 'N';
+			if(board[0][chosenMove] == 0){
+				notValid = 0;
+			}
+		} else if(randHeading == 1){
+			chosenHeading = 'E';
+			if(board[chosenMove][size-1] == 0){
+				notValid = 0;
+			}
+		} else if(randHeading == 2){
+			chosenHeading = 'S';
+			if(board[size-1][chosenMove] == 0){
+				notValid = 0;
+			}
+		} else{
+			chosenHeading = 'W';
+			if(board[chosenMove][0] == 0){
+				notValid = 0;
+			}
+		}
+	}
+
+	// Set pointers to chosen thing
+	*side = chosenHeading;
+	*move = chosenMove;
+
 }
 
 void GetMoveBot2(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move)
 {
-	// This definition is WRONG.  To avoid compiler warnings, all of the input variables have been
-	// referred to below.  Fix this function by *deleting this comment* and the code below, and
-	// writing a correct definition.  If you do not attempt this task, leave this definition unchanged.
-	*side = 'N';
-	*move = 0;
-	board[0][0] = (size+player)-(size+player);
+	// 1. Pick a random heading
+	// 2. Pick a random number 
+	// 3. If valid, make that move
+	// 4. Otherwise, keep repeating 1 & 2 until valid
+
+	int notValid = 1, randHeading, chosenMove;
+	char chosenHeading;
+
+	while(notValid){
+		// Pick a move number
+		chosenMove = (rand() % size);
+		randHeading = (rand() % 4);
+
+		// Pick a heading, and check validity
+		if(randHeading == 0){
+			chosenHeading = 'N';
+			if(board[0][chosenMove] == 0){
+				notValid = 0;
+			}
+		} else if(randHeading == 1){
+			chosenHeading = 'E';
+			if(board[chosenMove][size-1] == 0){
+				notValid = 0;
+			}
+		} else if(randHeading == 2){
+			chosenHeading = 'S';
+			if(board[size-1][chosenMove] == 0){
+				notValid = 0;
+			}
+		} else{
+			chosenHeading = 'W';
+			if(board[chosenMove][0] == 0){
+				notValid = 0;
+			}
+		}
+	}
+
+	*side = chosenHeading;
+	*move = chosenMove;
+
 }
