@@ -249,26 +249,26 @@ int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int rowIndex[], int
 
 	int j = 0;
 
-	if((rowIndex[0] > 0) && (rowIndex[0] < size) && (colIndex[0] > 0) && (colIndex[0] < size)){
+	if((rowIndex[0] >= 0) && (rowIndex[0] < size) && (colIndex[0] >= 0) && (colIndex[0] < size)){
 		// printf("About to access row: %d, col: %d\n", rowIndex[0], colIndex[0]);
 		if(board[rowIndex[0]][colIndex[0]] == player){
 			j++;
-			if((rowIndex[1] > 0) && (rowIndex[1] < size) && (colIndex[1] > 0) && (colIndex[1] < size)){
+			if((rowIndex[1] >= 0) && (rowIndex[1] < size) && (colIndex[1] >= 0) && (colIndex[1] < size)){
 				// printf("About to access row: %d, col: %d\n", rowIndex[1], colIndex[1]);
 				if(board[rowIndex[1]][colIndex[1]] == player){
 					j++;
-					if((rowIndex[2] > 0) && (rowIndex[2] < size) && (colIndex[2] > 0) && (colIndex[2] < size)){
+					if((rowIndex[2] >= 0) && (rowIndex[2] < size) && (colIndex[2] >= 0) && (colIndex[2] < size)){
 						// printf("About to access row: %d, col: %d\n", rowIndex[2], colIndex[2]);
 						if(board[rowIndex[2]][colIndex[2]] == player){
 							j++;
 						}
 					}
 				}
-				if((rowIndex[3] > 0) && (rowIndex[3] < size) && (colIndex[3] > 0) && (colIndex[3] < size)){
+				if((rowIndex[3] >= 0) && (rowIndex[3] < size) && (colIndex[3] >= 0) && (colIndex[3] < size)){
 					// printf("About to access row: %d, col: %d\n", rowIndex[3], colIndex[3]);
 					if(board[rowIndex[3]][colIndex[3]] == player){
 						j++;
-						if((rowIndex[4] > 0) && (rowIndex[4] < size) && (colIndex[4] > 0) && (colIndex[4] < size)){
+						if((rowIndex[4] >= 0) && (rowIndex[4] < size) && (colIndex[4] >= 0) && (colIndex[4] < size)){
 							// printf("About to access row: %d, col: %d\n", rowIndex[4], colIndex[4]);
 							if(board[rowIndex[4]][colIndex[4]] == player){
 								j++;
@@ -280,13 +280,13 @@ int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int rowIndex[], int
 		}
 	}
 
-	if((rowIndex[3] > 0) && (rowIndex[3] < size) && (colIndex[3] > 0) && (colIndex[3] < size)){
+	if((rowIndex[3] >= 0) && (rowIndex[3] < size) && (colIndex[3] >= 0) && (colIndex[3] < size)){
 		if(board[rowIndex[3]][colIndex[3]] == player){
 			j++;
-			if((rowIndex[4] > 0) && (rowIndex[4] < size) && (colIndex[4] > 0) && (colIndex[4] < size)){
+			if((rowIndex[4] >= 0) && (rowIndex[4] < size) && (colIndex[4] >= 0) && (colIndex[4] < size)){
 				if(board[rowIndex[4]][colIndex[4]] == player){
 					j++;
-					if((rowIndex[4] > 0) && (rowIndex[4] < size) && (colIndex[4] > 0) && (colIndex[4] < size)){
+					if((rowIndex[4] >= 0) && (rowIndex[4] < size) && (colIndex[4] >= 0) && (colIndex[4] < size)){
 						// printf("About to access row: %d, col: %d\n", rowIndex[5], colIndex[5]);
 						if(board[rowIndex[5]][colIndex[5]] == player){
 							j++;
@@ -294,10 +294,10 @@ int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int rowIndex[], int
 					}
 				}
 			}
-			if((rowIndex[0] > 0) && (rowIndex[0] < size) && (colIndex[0] > 0) && (colIndex[0] < size)){
+			if((rowIndex[0] >= 0) && (rowIndex[0] < size) && (colIndex[0] >= 0) && (colIndex[0] < size)){
 				if(board[rowIndex[0]][colIndex[0]] == player){
 					j++;
-					if((rowIndex[0] > 0) && (rowIndex[0] < size) && (colIndex[0] > 0) && (colIndex[0] < size)){
+					if((rowIndex[0] >= 0) && (rowIndex[0] < size) && (colIndex[0] >= 0) && (colIndex[0] < size)){
 						if(board[rowIndex[1]][colIndex[1]] == player){
 							j++;
 						}
@@ -342,6 +342,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 
 	// Carry out horizontal propogation
 	j = DoPropogation(board, player, rowIndex1, colIndex1, size);
+	// printf("horizontal j: %d\n", j);
 	if(j >= 3){
 		return player;
 	} else{
@@ -350,6 +351,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 
 	// Carry out vertical propogation
 	j = DoPropogation(board, player, rowIndex2, colIndex2, size);
+	// printf("verical j: %d\n", j);
 	if(j >= 3){
 		return player;
 	} else{
@@ -358,6 +360,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 
 	// Carry out positive diagonal propogation
 	j = DoPropogation(board, player, rowIndex3, colIndex1, size);
+	// printf("+diagonal j: %d\n", j);
 	if(j >= 3){
 		return player;
 	} else{
@@ -366,6 +369,7 @@ int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, 
 
 	// Carry out negative diagonal propogation
 	j = DoPropogation(board, player, rowIndex3, colIndex3, size);
+	// printf("-diagonal j: %d\n", j);
 	if(j >= 3){
 		return player;
 	} else{
@@ -557,7 +561,7 @@ void GetMoveBot1(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side
 	}
 
 	// for (int k = 0; k < size; k++) {
-	// 	printf("   ");
+	// 	printf("   ");~
 	// 	for (int l = 0; l < size; l++) {
 	// 		printf("%d ", tempBoard[k][l]);
 	// 	}
