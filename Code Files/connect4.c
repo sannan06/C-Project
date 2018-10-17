@@ -245,132 +245,82 @@ void AddMoveToBoard(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move
 	}
 }
 
-int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int rowIndex[], int colIndex[], int size){
+int DoPropogation(int board[MAX_SIZE][MAX_SIZE], int player, int row, int col, int size, int changeInX, int changeInY)
+{
+	int counter = 0;
+	int i = row;
+	int j = col;
 
-	int j = 0;
-
-	if((rowIndex[0] >= 0) && (rowIndex[0] < size) && (colIndex[0] >= 0) && (colIndex[0] < size)){
-		// printf("About to access row: %d, col: %d\n", rowIndex[0], colIndex[0]);
-		if(board[rowIndex[0]][colIndex[0]] == player){
-			j++;
-			if((rowIndex[1] >= 0) && (rowIndex[1] < size) && (colIndex[1] >= 0) && (colIndex[1] < size)){
-				// printf("About to access row: %d, col: %d\n", rowIndex[1], colIndex[1]);
-				if(board[rowIndex[1]][colIndex[1]] == player){
-					j++;
-					if((rowIndex[2] >= 0) && (rowIndex[2] < size) && (colIndex[2] >= 0) && (colIndex[2] < size)){
-						// printf("About to access row: %d, col: %d\n", rowIndex[2], colIndex[2]);
-						if(board[rowIndex[2]][colIndex[2]] == player){
-							j++;
-						}
-					}
-				}
-				if((rowIndex[3] >= 0) && (rowIndex[3] < size) && (colIndex[3] >= 0) && (colIndex[3] < size)){
-					// printf("About to access row: %d, col: %d\n", rowIndex[3], colIndex[3]);
-					if(board[rowIndex[3]][colIndex[3]] == player){
-						j++;
-						if((rowIndex[4] >= 0) && (rowIndex[4] < size) && (colIndex[4] >= 0) && (colIndex[4] < size)){
-							// printf("About to access row: %d, col: %d\n", rowIndex[4], colIndex[4]);
-							if(board[rowIndex[4]][colIndex[4]] == player){
-								j++;
-							}
-						}
-					}	
-				}
-			}
+	while(board[i][j] == player){
+		if(board[i][j] == player){
+			counter++;
 		}
+		i += changeInX;
+		j += changeInY;
 	}
 
-	if((rowIndex[3] >= 0) && (rowIndex[3] < size) && (colIndex[3] >= 0) && (colIndex[3] < size)){
-		if(board[rowIndex[3]][colIndex[3]] == player){
-			j++;
-			if((rowIndex[4] >= 0) && (rowIndex[4] < size) && (colIndex[4] >= 0) && (colIndex[4] < size)){
-				if(board[rowIndex[4]][colIndex[4]] == player){
-					j++;
-					if((rowIndex[4] >= 0) && (rowIndex[4] < size) && (colIndex[4] >= 0) && (colIndex[4] < size)){
-						// printf("About to access row: %d, col: %d\n", rowIndex[5], colIndex[5]);
-						if(board[rowIndex[5]][colIndex[5]] == player){
-							j++;
-						}
-					}
-				}
-			}
-			if((rowIndex[0] >= 0) && (rowIndex[0] < size) && (colIndex[0] >= 0) && (colIndex[0] < size)){
-				if(board[rowIndex[0]][colIndex[0]] == player){
-					j++;
-					if((rowIndex[0] >= 0) && (rowIndex[0] < size) && (colIndex[0] >= 0) && (colIndex[0] < size)){
-						if(board[rowIndex[1]][colIndex[1]] == player){
-							j++;
-						}
-					}
-				}
-			}
-		}
-	}
-	return j;
+	return counter;
 }
 	
 int CheckGameOver(int board[MAX_SIZE][MAX_SIZE], int size, int player, int row, int col)
 {
-	int counter = 0, i = 0, j = 0;
+	int counter = 0;
+	int rightCounter;
+	int leftCounter;
 
-	// Checking for available moves
-	for(int i = 0; i < size; i++){
-		for(int j = 0; j < size; j++){
-			if(((i == 0) || (i == (size-1))) && (board[i][j] != 0)){
-				counter++;
-			} else if(((j == 0) || (j == (size-1))) && (board[i][j] != 0)){
-				counter++;
-			}
-		}		
-	}
-	if(counter == (2*size + 2*(size-2))){
-		return player;
-	}
-		
-	// Row and Col positions for horizontal propogation
-	int rowIndex1[] = {row,row,row,row,row,row};
-	int colIndex1[] = {col+1, col+2, col+3, col-1, col-2, col-3};
+	/* -------- HORIZONTALLY ------- */
+	// Propogate horizontally to the right
+	rightCounter = DoPropogation(board, player, row, col, size, 0, 1);
+	// Propogate horizontally to the left
+	leftCounter = DoPropogation(board, player, row, col, size, 0, -1);
+	counter = rightCounter + leftCounter;
 
-	// Row and col positions for vertical propogation
-	int rowIndex2[] = {row+1,row+2,row+3,row-1,row-2,row-3};
-	int colIndex2[] = {col,col,col,col,col,col};
-
-	// Row and col positions for diagonal propogation
-	int rowIndex3[] = {row-1, row-2, row-3, row+1, row+2, row+3};
-	int colIndex3[] = {col-1, col-2, col-3, col+1, col+2, col+3};
-
-
-	// Carry out horizontal propogation
-	j = DoPropogation(board, player, rowIndex1, colIndex1, size);
-	// printf("horizontal j: %d\n", j);
-	if(j >= 3){
+	if(counter >= 5){
 		return player;
 	} else{
-		j = 0;
+		counter = 0;
+		rightCounter = 0;
+		leftCounter = 0;
 	}
 
-	// Carry out vertical propogation
-	j = DoPropogation(board, player, rowIndex2, colIndex2, size);
-	// printf("verical j: %d\n", j);
-	if(j >= 3){
+	/* -------- VERTICAL ---------- */
+	// Propogate verically to the bottom
+	rightCounter = DoPropogation(board, player, row, col, size, 1, 0);
+	// Propogate horizontally to the top
+	leftCounter = DoPropogation(board, player, row, col, size, -1, 0);
+	counter = rightCounter + leftCounter;
+
+	if(counter >= 5){
 		return player;
 	} else{
-		j = 0;
+		counter = 0;
+		rightCounter = 0;
+		leftCounter = 0;
 	}
 
-	// Carry out positive diagonal propogation
-	j = DoPropogation(board, player, rowIndex3, colIndex1, size);
-	// printf("+diagonal j: %d\n", j);
-	if(j >= 3){
+	/* -------- POSITIVE DIAGONAL ---------- */
+	// Propogate diagonal to the upper-right
+	rightCounter = DoPropogation(board, player, row, col, size, -1, 1);
+	// Propogate digonally to the bottom-left
+	leftCounter = DoPropogation(board, player, row, col, size, 1, -1);
+	counter = rightCounter + leftCounter;
+
+	if(counter >= 5){
 		return player;
 	} else{
-		j = 0;
+		counter = 0;
+		rightCounter = 0;
+		leftCounter = 0;
 	}
 
-	// Carry out negative diagonal propogation
-	j = DoPropogation(board, player, rowIndex3, colIndex3, size);
-	// printf("-diagonal j: %d\n", j);
-	if(j >= 3){
+	/* -------- NEGTAIVE DIAGONAL ---------- */
+	// Propogate diagonal to the upper-left
+	rightCounter = DoPropogation(board, player, row, col, size, -1, -1);
+	// Propogate digonally to the bottom-right
+	leftCounter = DoPropogation(board, player, row, col, size, 1, 1);
+	counter = rightCounter + leftCounter;
+
+	if(counter >= 5){
 		return player;
 	} else{
 		return 0;
@@ -524,6 +474,89 @@ void GetHeadingAndMove(int board[MAX_SIZE][MAX_SIZE], int size, int player, char
 		}
 	}
 
+	*move = -1;
+
+}
+
+void GetFinalPosition(int board[MAX_SIZE][MAX_SIZE], int size, char side, int move, int *lastRow, int *lastCol){
+	if(side == 'N'){
+		for(int i = 0; i < size; i++){
+			if(board[i][move] != 0){
+				if(i == 0){
+					*lastRow = -1;
+					*lastCol = -1;
+					break;
+				} else{
+					*lastRow = (i-1);
+					*lastCol = move;
+					break;
+				}
+			} else if(i == (size-1)){
+				*lastRow = i;
+				*lastCol = move;
+				break;	
+			}
+		}
+	} else if(side == 'S'){
+		for(int i = (size-1); i >= 0; i--){
+			// printf("Testing row: %d, column: %d\n", i, move);
+			if(board[i][move] != 0){
+				if(i == (size-1)){
+					// printf("Working\n");
+					*lastRow = -1;
+					*lastCol = -1;
+					break;
+				} else{
+					// printf("Entered here\n");
+					*lastRow = (i+1);
+					*lastCol = move;
+					break;
+				}
+			} else if(i == 0){
+				// printf("Reached end of grid\n");
+				*lastRow = i;
+				*lastCol = move;
+				break;
+			}
+		}		
+	} else if(side == 'E'){
+		for(int i = (size - 1); i >= 0; i--){
+			// printf("Testing row: %d, column: %d\n", move, i);
+			if(board[move][i] != 0){
+				if(i == (size-1)){
+					*lastRow = -1;
+					*lastCol = -1;
+					break;
+				} else{
+					*lastRow = move;
+					*lastCol = (i+1);
+					break;
+				}
+			} else if(i == 0){
+				*lastRow = move;
+				*lastCol = i;
+				break;
+			}
+		}
+	} else if(side == 'W'){
+		for(int i = 0; i < size; i++){
+			if(board[move][i] != 0){
+				if(i == 0){
+					*lastCol = -1;
+					*lastRow = -1;
+					break;
+				} else{
+					*lastRow = move;
+					*lastCol = (i-1);
+					break;
+				}
+			} else if(i == (size-1)){
+				*lastRow = move;
+				*lastCol = i;
+				break;
+			}
+		}
+	}
 }
 
 void GetMoveBot1(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side, int *move)
@@ -531,34 +564,110 @@ void GetMoveBot1(int board[MAX_SIZE][MAX_SIZE], int size, int player, char *side
 
 	int notValid = 1, randHeading, chosenMove, result = 0;
 	char chosenHeading;
-	int tempBoard[MAX_SIZE][MAX_SIZE];
-	for(int i = 0; i < size; i++){
-		for(int j = 0; j < size; j++){
-			tempBoard[i][j] = board[i][j];
-		}
-	}
+	int lastRow = 0;
+	int lastCol = 0;
+	int checkWin = 0;
 
-	// Loop through the board
+	// Consider all North moves
 	for(int i = 0; i < size; i++){
-		for(int j = 0; j < size; j++){
-			// For every place there is no token
-			if(board[i][j] == 0){
-				// Set that position to player
-				board[i][j] = player;
-				// See if that would result in a win
-				result = CheckGameOver(board, size, player, i, j);
-				// Reset that position back to 0
-				board[i][j] = 0;
-				// If it would result in a win
-				if(result == player){
-					// See what side and move would be needed to make that move
-					GetHeadingAndMove(board, size, player, side, move, i, j);
-					// Then quit the function
-					return;
-				}
+		GetFinalPosition(board, size, 'N', i, &lastRow, &lastCol);
+		if((lastRow != -1) && (lastCol != -1)){
+			board[lastRow][lastCol] = player;
+			checkWin = CheckGameOver(board, size, player, lastRow, lastCol);
+			board[lastRow][lastCol] = 0;
+			if(checkWin == player){
+				*side = 'N';
+				*move = i;
+				printf("a move in side: 'N' and move: %d will win\n", i);
+				return;
 			}
 		}
 	}
+
+	// Consider all South moves
+	for(int i = 0; i < size; i++){
+		GetFinalPosition(board, size, 'S', i, &lastRow, &lastCol);
+		if((lastRow != -1) && (lastCol != -1)){
+			board[lastRow][lastCol] = player;
+			checkWin = CheckGameOver(board, size, player, lastRow, lastCol);
+			board[lastRow][lastCol] = 0;
+			if(checkWin == player){
+				*side = 'S';
+				*move = i;
+				printf("a move in side: 'S' and move: %d will win\n", i);
+				return;
+			}
+		}
+	}
+
+	// Consider all East moves
+	for(int i = 0; i < size; i++){
+		GetFinalPosition(board, size, 'E', i, &lastRow, &lastCol);
+		if((lastRow != -1) && (lastCol != -1)){
+			board[lastRow][lastCol] = player;
+			checkWin = CheckGameOver(board, size, player, lastRow, lastCol);
+			board[lastRow][lastCol] = 0;
+			if(checkWin == player){
+				*side = 'E';
+				*move = i;
+				printf("a move in side: 'E' and move: %d will win\n", i);
+				return;
+			}
+		}
+	}
+
+	// Consider all West moves
+	for(int i = 0; i < size; i++){
+		GetFinalPosition(board, size, 'W', i, &lastRow, &lastCol);
+		if((lastRow != -1) && (lastCol != -1)){
+			board[lastRow][lastCol] = player;
+			checkWin = CheckGameOver(board, size, player, lastRow, lastCol);
+			board[lastRow][lastCol] = 0;
+			if(checkWin == player){
+				*side = 'W';
+				*move = i;
+				printf("a move in side: 'W' and move: %d will win\n", i);
+				return;
+			}
+		}
+	}
+
+
+	// int tempBoard[MAX_SIZE][MAX_SIZE];
+	// for(int i = 0; i < size; i++){
+	// 	for(int j = 0; j < size; j++){
+	// 		tempBoard[i][j] = board[i][j];
+	// 	}
+	// }
+
+	// Loop through the board
+
+	
+	// for(int i = 0; i < size; i++){
+	// 	for(int j = 0; j < size; j++){
+	// 		// For every place there is no token
+	// 		if(board[i][j] == 0){
+	// 			// Set that position to player
+	// 			board[i][j] = player;
+	// 			// See if that would result in a win
+	// 			result = CheckGameOver(board, size, player, i, j);
+	// 			// Reset that position back to 0
+	// 			board[i][j] = 0;
+	// 			// If it would result in a win
+	// 			if(result == player){
+	// 				// See what side and move would be needed to make that move
+	// 				GetHeadingAndMove(board, size, player, side, move, i, j);
+	// 				printf("move: %d", *move);
+	// 				// Check to see if that move was available
+	// 				if(*move != -1){
+	// 					// Then quit the function
+	// 					return;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+
 
 	// for (int k = 0; k < size; k++) {
 	// 	printf("   ");~

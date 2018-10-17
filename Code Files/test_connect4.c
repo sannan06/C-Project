@@ -348,6 +348,13 @@ int PlayOneGame(int startingPlayer, int size, int gameType)
 			}
 		}
 		AddMoveToBoard(board, size, side, move, player, &lastRow, &lastCol);
+		for (int i = 0; i < size; i++) {
+					printf("   ");
+					for (int j = 0; j < size; j++) {
+						printf("%d ", board[i][j]);
+					}
+					printf("\n");
+		}
 		gameOver = CheckGameOver(board, size, player, lastRow, lastCol);
 		if (gameType != 3) {
 			GetDisplayBoardString(board, size, displayBoardString);
