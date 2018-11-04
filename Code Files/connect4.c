@@ -12,25 +12,11 @@ DO NOT REMOVE ANY FUNCTION DEFINITIONS - they all must be present when you submi
 
 int SecondPlacePrize(int prize1, int prize2, int prize3)
 {
-	if((prize1 >= prize2) && (prize1 >= prize3)){
-		if(prize2 >= prize3){
-			return prize2;
-		} else{
-			return prize3;
-		}
-	} else if((prize2 >= prize1) && (prize2 >= prize3)){
-		if(prize1 >= prize3){
-			return prize1;
-		} else{
-			return prize3;
-		}
-	} else{
-		if(prize2 >= prize1){
-			return prize2;
-		} else{
-			return prize1;
-		}
-	}
+ 	double prizes[3];
+	prizes[0] = prize1;
+	prizes[1] = prize2;
+	prizes[2] = prize3;
+	return (int) MedianAbility(prizes, 3);
 }
 
 int FourInARow(int values[], int length)
